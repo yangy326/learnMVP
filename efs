@@ -1,0 +1,11 @@
+* [33mcommit 08de53042d0edf522427bda1b6afe166a207bffa[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m
+[31m|[m Author: yangyang <yangyangad61v1.com>
+[31m|[m Date:   Fri May 17 16:01:48 2019 +0800
+[31m|[m 
+[31m|[m     create base android library
+[31m|[m 
+* [33mcommit ef7044f7d4ba2eaee02902009f14d9ad88b29c3b[m[33m ([m[1;31morigin/master[m[33m)[m
+  Author: yangyang <yangyangad61v1.com>
+  Date:   Fri May 17 15:46:02 2019 +0800
+  
+      Initial commit
