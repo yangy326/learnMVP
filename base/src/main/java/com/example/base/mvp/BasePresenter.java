@@ -1,7 +1,7 @@
 package com.example.base.mvp;
 
 
-import com.i61.base.event.RxEventBus;
+
 
 
 public class BasePresenter<M extends IModel, V extends BaseView> implements IPresenter {
@@ -11,7 +11,7 @@ public class BasePresenter<M extends IModel, V extends BaseView> implements IPre
     protected M mModel;
     protected V mView;
 
-    protected RxEventBus mEventBus;
+
 
     public BasePresenter(M model, V rootView) {
         this.mModel = model;
@@ -43,12 +43,6 @@ public class BasePresenter<M extends IModel, V extends BaseView> implements IPre
         this.mView = null;
     }
 
-    /**
-     * 设置RxEventBus
-     * @return
-     */
-    public void setEventBus(RxEventBus mBus) {
-        mEventBus=mBus;
-    }
+
 
 }
