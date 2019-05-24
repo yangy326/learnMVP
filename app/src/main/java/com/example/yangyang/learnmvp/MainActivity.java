@@ -1,28 +1,29 @@
 package com.example.yangyang.learnmvp;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.support.design.widget.BottomNavigationView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.base.base.BaseActivity;
-import com.example.base.base.BaseFragment;
-import com.example.yangyang.learnmvp.fragment.FriendFragment;
-import com.example.yangyang.learnmvp.fragment.MyFragment;
-import com.example.yangyang.learnmvp.fragment.SearchFragment;
-import com.example.yangyang.learnmvp.fragment.VideoFragment;
+import com.example.yangyang.learnmvp.fragment.main.EyeFragment;
+import com.example.yangyang.learnmvp.fragment.main.MessageFragment;
+import com.example.yangyang.learnmvp.fragment.main.ContactFragment;
+import com.example.yangyang.learnmvp.fragment.main.FireFragment;
+import com.example.yangyang.learnmvp.helper.NavHepler;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements NavHepler.OnTabChangedListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private TextView my,search,friend,video;
+    private TextView title;
 
     private FrameLayout container;
+
+    private NavHepler<String> hepler;
+
+    private TextView currentTopView;
+
+    private BottomNavigationView mNavigation;
 
 
     @Override
@@ -33,55 +34,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initWidget() {
         super.initWidget();
-        my = (TextView)findViewById(R.id.main_txt_my);
-        search = (TextView)findViewById(R.id.main_txt_search);
-        friend = (TextView)findViewById(R.id.main_txt_friend);
-        video = (TextView)findViewById(R.id.main_txt_video);
+        hepler = new NavHepler<String>(this,R.id.main_layout_container,getSupportFragmentManager(),this);
+        hepler.add(R.id.action_message,new NavHepler.Tab<String>(MessageFragment.class,"消息"))
+                .add(R.id.action_contact,new NavHepler.Tab<String>(EyeFragment.class,"联系人"))
+                .add(R.id.action_eye,new NavHepler.Tab<String>(ContactFragment.class,"看点"))
+                .add(R.id.action_fire,new NavHepler.Tab<String>(FireFragment.class,"动态"));
+
+        title = (TextView)findViewById(R.id.title);
         container = (FrameLayout) findViewById(R.id.main_layout_container);
-        my.setOnClickListener(this);
-        search.setOnClickListener(this);
-        friend.setOnClickListener(this);
-        video.setOnClickListener(this);
+        mNavigation = (BottomNavigationView)findViewById(R.id.navigation);
+
+        mNavigation.setOnNavigationItemSelectedListener(this);
+
     }
 
     @Override
-    public void onClick(View v) {
-        boolean isFirst = true;
-        switch (v.getId()){
-            case R.id.main_txt_my:
-
-
-                MyFragment myFragment = new MyFragment();
-                topbarClick(my,myFragment);
-
-                break;
-            case R.id.main_txt_search:
-
-                SearchFragment searchFragment = new SearchFragment();
-                topbarClick(search,searchFragment);
-                break;
-            case R.id.main_txt_friend:
-                FriendFragment friendFragment = new FriendFragment();
-                topbarClick(friend,friendFragment);
-                break;
-            case R.id.main_txt_video :
-                VideoFragment videoFragment = new VideoFragment();
-                topbarClick(video,videoFragment);
-                break;
-
-        }
+    protected void initData() {
+        super.initData();
+        Menu menu = mNavigation.getMenu();
+        // 触发首次选中Home
+       menu.performIdentifierAction(menu.getItem(0).getItemId(),0);
     }
 
-    public void topbarClick(TextView textView , BaseFragment baseFragment){
-        textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        textView.setTextSize(24);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_layout_container,baseFragment)
-                .commit();
+
+
+    @Override
+    public void onTabChanged(NavHepler.Tab newTab, NavHepler.Tab oldTab) {
+
+
+
+    title.setText(newTab.extra.toString());
 
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        return hepler.performClickMenu(menuItem.getItemId());
+    }
 }
 
