@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_portrait"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/defaultimg"
+        android:layout_marginLeft="8dp"/>
+
+
+    <TextView
+        android:id="@+id/txt_content"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="你好啊"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginLeft="8dp"
+        android:textColor="@color/black"
+        />
+
+</LinearLayout>

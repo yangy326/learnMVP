@@ -16,14 +16,9 @@
         android:orientation="vertical"
         android:fitsSystemWindows="true">
 
-        <RelativeLayout
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/login_edit_selecter"
-            >
 
             <EditText
+                android:layout_gravity="center"
                 android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:maxLines="1"
                 android:background="@null"
@@ -35,17 +30,12 @@
                 android:textColor="#010101"
 
                 android:textSize="16sp"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/login_edit_selecter"
 
-            >
+
 
             <EditText
-                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:maxLines="1"
                 android:background="@null"
                 android:layout_width="250dp"
@@ -56,7 +46,7 @@
                 android:textColor="#010101"
 
                 android:textSize="16sp"/>
-        </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_gravity="center"
@@ -67,7 +57,7 @@
             <EditText
 
 
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:maxLines="1"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
@@ -104,14 +94,14 @@
             android:layout_height="44dp"
             android:layout_gravity="center"
             android:layout_marginTop="41dp"
-            android:text="登录"
+            android:text="注册"
             android:textColor="@color/white"
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             android:background="@drawable/login_btn"/>
         <TextView
             android:id="@+id/txt_register_goLogin"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="170dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="也有账号!去登陆"

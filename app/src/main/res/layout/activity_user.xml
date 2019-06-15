@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activity.UserActivity"
     android:id="@+id/container"
+
     >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/userback"
+        android:scaleType="center"/>
 
 
 </FrameLayout>

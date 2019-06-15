@@ -4,45 +4,33 @@ package com.example.base.mvp;
 
 
 
-public class BasePresenter<M extends IModel, V extends BaseView> implements IPresenter {
-    protected final String TAG = this.getClass().getSimpleName();
-//    protected CompositeSubscription mCompositeSubscription;
+public class BasePresenter< M extends BaseContract.View> implements BaseContract.Presenter{
 
-    protected M mModel;
-    protected V mView;
+    protected M mview;
 
-
-
-    public BasePresenter(M model, V rootView) {
-        this.mModel = model;
-        this.mView = rootView;
-        onStart();
+    public BasePresenter(M mview) {
+        this.mview = mview;
+        this.mview.setPresenter(this);
     }
 
-    public BasePresenter(V rootView) {
-        this.mView = rootView;
-        onStart();
-    }
-
-    public BasePresenter() {
-        onStart();
-    }
-
-
-    @Override
-    public void onStart() {
-
+    protected M getMview() {
+        return mview;
     }
 
     @Override
-    public void onDestroy() {
-        if (mModel != null) {
-            mModel.onDestroy();
-            this.mModel = null;
+    public void start() {
+        if (mview != null){
+            mview.showLoading();
         }
-        this.mView = null;
+
     }
 
+    @Override
+    public void destory() {
+        if (mview != null){
+            mview.setPresenter(null);
+            mview = null;
+        }
 
-
+    }
 }

@@ -24,12 +24,12 @@
             >
 
             <EditText
-                android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:digits="0123456789"
                 android:maxLines="1"
                 android:background="@null"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_account"
+                android:id="@+id/edit_account_login"
                 android:hint="请输入CMS账号"
                 android:textColorHint="#9B9B9B "
                 android:textColor="#010101"
@@ -50,7 +50,7 @@
                 android:maxLines="1"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_password"
+                android:id="@+id/edit_password_login"
                 android:hint="请输入CMS密码"
                 android:background="@null"
                 android:textColorHint="#9B9B9B "
@@ -64,10 +64,10 @@
                 android:id="@+id/eyefill"
                 android:layout_width="23dp"
                 android:layout_height="23dp"
-                android:layout_alignBottom="@id/edit_password"
+                android:layout_alignBottom="@id/edit_password_login"
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="0dp"
-                android:layout_toRightOf="@id/edit_password"
+                android:layout_toRightOf="@id/edit_password_login"
                 android:src="@drawable/eyeclosefill" />
         </RelativeLayout>
 

@@ -1,4 +1,4 @@
-package com.example.yangyang.learnmvp.fragment.main;
+package com.example.yangyang.learnmvp.fragment.contact;
 
 
 import android.os.Bundle;
@@ -13,15 +13,13 @@ import com.example.yangyang.learnmvp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContactFragment extends BaseFragment {
-
-
+public class GroupFragment extends BaseFragment {
 
 
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.fragment_search;
+        return R.layout.fragment_group;
     }
 
 }

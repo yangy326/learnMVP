@@ -3,14 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.main.EyeFragment">
+    tools:context=".fragment.main.FriendFragment">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/MyTablayoutstyle"
+        android:layout_marginTop="53dp"
+        />
+
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v4.view.ViewPager
+        android:background="@color/white"
+        android:id="@+id/viewpager"
+        android:layout_marginTop="110dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="FRIENF"
-        android:gravity="center"
-        android:textColor="@color/black"/>
+        />
 
 </FrameLayout>

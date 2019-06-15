@@ -11,14 +11,18 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.base.base.widget.convention.PlaceHolderView;
 import com.example.base.mvp.IPresenter;
 
 import java.util.List;
 
 public  abstract class BaseActivity extends AppCompatActivity {
+
+    protected PlaceHolderView mPlaceHolderView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         initWindows();
         if (initArgs(getIntent().getExtras())){
@@ -29,6 +33,10 @@ public  abstract class BaseActivity extends AppCompatActivity {
         else {
             Toast.makeText(this, "Bundle传值错误", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
+        this.mPlaceHolderView = placeHolderView;
     }
 
 

@@ -1,16 +1,19 @@
 package com.example.yangyang.learnmvp.activity;
 
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import com.example.base.base.BaseActivity;
 import com.example.base.base.BaseFragment;
+import com.example.yangyang.learnmvp.DemoIntentService;
+import com.example.yangyang.learnmvp.DemoPushService;
 import com.example.yangyang.learnmvp.R;
 import com.example.yangyang.learnmvp.fragment.user.LoginFragment;
 import com.example.yangyang.learnmvp.fragment.user.RegisterFragment;
 import com.example.yangyang.learnmvp.fragment.user.UserTrigger;
+import com.igexin.sdk.PushManager;
 
 public class UserActivity extends BaseActivity implements UserTrigger{
 
@@ -26,30 +29,37 @@ public class UserActivity extends BaseActivity implements UserTrigger{
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
     protected void initWindows() {
         super.initWindows();
 
-        mcurrentFragment = loginFragment = new LoginFragment();
+        mcurrentFragment = registerFragment = new RegisterFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.container, mcurrentFragment)
                 .commit();
+
     }
 
     @Override
     public void triggerView() {
 
         BaseFragment fragment;
-        if (mcurrentFragment == loginFragment) {
-            if (registerFragment == null) {
+        if (mcurrentFragment == registerFragment) {
+            if (loginFragment == null) {
                 //默认情况下为null，
                 //第一次之后就不为null了
-                registerFragment = new RegisterFragment();
+                loginFragment = new LoginFragment();
             }
-            fragment = registerFragment;
+            fragment = loginFragment;
         } else {
             // 因为默认请求下mLoginFragment已经赋值，无须判断null
-            fragment = loginFragment;
+            fragment = registerFragment;
         }
 
         // 重新赋值当前正在显示的Fragment
@@ -59,5 +69,10 @@ public class UserActivity extends BaseActivity implements UserTrigger{
                 .replace(R.id.container, fragment)
                 .commit();
 
+    }
+
+    public static void GoUserActivity(Context context){
+        Intent intent = new Intent(context,UserActivity.class);
+        context.startActivity(intent);
     }
 }
